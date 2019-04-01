@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewData["Title"] = "TextCaseing";
+}
+
+<h1>TextCasing</h1>
+
+@{
+    string word = "";
+    <form asp-controller="HomeController" asp-action="TextCasing" method="post">
+        <label>Enter the phrase you would like to invert the casing of</label>
+        <input asp-for="@word" />
+        <button type="submit">Enter</button>
+    </form>
+}
+
+
+@ViewData["InvertCase"]

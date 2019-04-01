@@ -5,6 +5,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using HW_05.Models;
+using ServiceReference1;
+using ServiceReference;
+using System.Net.Http;
+using Newtonsoft.Json;
 
 namespace HW_05.Controllers
 {
@@ -12,6 +16,34 @@ namespace HW_05.Controllers
     {
         public IActionResult Index()
         {
+            return View();
+        }
+
+        public async Task<IActionResult> NumberConversion(int num)
+        {
+            var client = new NumberConversionSoapTypeClient(NumberConversionSoapTypeClient.EndpointConfiguration.NumberConversionSoap);
+            var response = await client.NumberToDollarsAsync(num);
+            ViewData["dollars"] = response.Body.NumberToDollarsResult;
+
+            return View();
+        }
+
+        public async Task<IActionResult> TextCasing(string word)
+        {
+            var client = new TextCasingSoapTypeClient(TextCasingSoapTypeClient.EndpointConfiguration.TextCasingSoap);
+            var response = await client.InvertStringCaseAsync(word);
+            ViewData["InvertCase"] = response.Body.InvertStringCaseResult;
+
+            return View();
+        }
+
+        public async Task<IActionResult> ChuckJoke(string firstName, string lastName)
+        {
+            var httpClient = new HttpClient();
+            var json = await httpClient.GetStringAsync("http://api.icndb.com/jokes/random?firstName=" + firstName + "&amp;lastName=" + lastName);
+            var response = JsonConvert.DeserializeObject<ChuckResponse>(json);
+            ViewData["ChuckJoke"] = response.Value.Joke;
+
             return View();
         }
 

@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Title"] = "ChuckJoke";
+}
+<body class="chuckjoke">
+    <div class="numberInput">
+        <h1>Chuck Norris Jokes</h1>
+
+        @{
+            var firstName = "";
+            var lastName = "";
+            <form asp-controller="HomeController" asp-action="ChuckJoke" method="post" class="service">
+                <p><button class="serviceButton" type="submit"><strong>New Joke</strong></button></p>
+            </form>
+        }
+
+        <p class="service"><h4>@ViewData["ChuckJoke"]</h4></p>
+    </div>
+</body>
