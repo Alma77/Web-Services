@@ -40,7 +40,7 @@ namespace HW_05.Controllers
         public async Task<IActionResult> ChuckJoke(string firstName, string lastName)
         {
             var httpClient = new HttpClient();
-            var json = await httpClient.GetStringAsync("http://api.icndb.com/jokes/random?firstName=" + firstName + "&amp;lastName=" + lastName);
+            var json = await httpClient.GetStringAsync("http://api.icndb.com/jokes/random?firstName=John&amp;lastName=Doe");
             var response = JsonConvert.DeserializeObject<ChuckResponse>(json);
             ViewData["ChuckJoke"] = response.Value.Joke;
 
