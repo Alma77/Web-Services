@@ -78,6 +78,10 @@ h1, .service, h4{
     background-image: url(chuck-norris.jpg);
 }
 
+.countryinfo {
+    background-image: url(flags.jpg);
+}
+
 .numberInput {
     background-color: white;
     padding-bottom: 2em;

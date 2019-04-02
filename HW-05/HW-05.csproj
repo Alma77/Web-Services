@@ -7,6 +7,7 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="wwwroot\css\chuck-norris.jpg" />
+    <None Include="wwwroot\css\flags.jpg" />
     <None Include="wwwroot\css\numbers.jpg" />
   </ItemGroup>
   <ItemGroup>

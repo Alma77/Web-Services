@@ -14,8 +14,9 @@ namespace HW_05.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            //var data = await CountryInfo("aruba");
             return View();
         }
 
@@ -45,6 +46,26 @@ namespace HW_05.Controllers
             ViewData["ChuckJoke"] = response.Value.Joke;
 
             return View();
+        }
+
+        public async Task<IActionResult> CountryInfo(string country)
+        {
+            var httpClient = new HttpClient();
+            if(country != null)
+            {
+                var json = await httpClient.GetStringAsync($"https://restcountries.eu/rest/v2/name/{country}?fullText=true");
+                try
+                {
+                    var response = JsonConvert.DeserializeObject<IEnumerable<Country>>(json);
+                    ViewData["Country"] = response.ElementAt(0).Capital;
+                }
+                catch ( Exception ex)
+                {
+
+                }
+            }
+                        
+          return View();
         }
 
         public IActionResult Privacy()

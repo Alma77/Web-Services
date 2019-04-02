@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "CountryInfo";
+}
+
+<body class="countryinfo">
+    <div class="numberInput">
+        <h1>Country Capitals</h1>
+
+        @{
+            string country = "";
+            <form asp-controller="HomeController" asp-action="CountryInfo" method="post" class="service">
+                <p class="service"><h4><label>Enter the Name of a country to learn its capital</label></h4></p>
+                <textarea asp-for="@country" rows="1" cols="50" placeholder="Ex: aruba"></textarea>
+                <p><button class="serviceButton" type="submit"><strong>Enter</strong></button></p>
+            </form>
+        }
+
+        <p class="service">
+            <h4>
+                @ViewData["Country"]
+            </h4>           
+        </p>
+    </div>
+</body>

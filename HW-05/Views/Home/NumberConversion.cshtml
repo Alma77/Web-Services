@@ -9,7 +9,7 @@
         @{
             Nullable<int> num = null;
             <form asp-controller="HomeController" asp-action="NumberConversion" method="post" class="service">
-                <p class="service"><h4><label>Enter the number you would like to convert to text:</label></h4></p>
+                <p class="service"><h4><label>Enter the number of dollars you would like to convert to text:</label></h4></p>
                 <textarea asp-for="@num" rows="1" cols="50" placeholder="Ex: 12457"></textarea>
                 <p><button class="serviceButton" type="submit"><strong>Enter</strong></button></p>
             </form>
